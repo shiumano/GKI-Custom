@@ -86,6 +86,9 @@ jobs:
         echo "head -n 10 common/Makefile"
         head -n 10 common/Makefile
         BUILD_CONFIG=common/build.config.gki.aarch64 build/config.sh savedefconfig
+        LTO=thin BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh || true
+        echo "言われたことをやる"
+        cp /home/runner/work/GKI-Custom/GKI-Custom/android-kernel/out/android13-5.15/common/modules.order common/android/gki_aarch64_modules
         LTO=thin BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh
         # tools/bazel build //common:kernel_aarch64_dist
 
